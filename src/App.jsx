@@ -4,7 +4,7 @@ import SearchOutput from "./components/SearchOutput.jsx";
 
 function App() {
   return (
-    <div className="px-6">
+    <div className="p-6">
       <Header />
       <main>
         <SearchForm />
