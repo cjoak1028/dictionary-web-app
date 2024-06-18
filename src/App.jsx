@@ -1,5 +1,6 @@
 import Header from "./components/Header.jsx";
 import SearchForm from "./components/SearchForm.jsx";
+import SearchOutput from "./components/SearchOutput.jsx";
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <Header />
       <main>
         <SearchForm />
-        Search Output
+        <SearchOutput />
       </main>
     </div>
   );

@@ -14,7 +14,7 @@ export default function SearchForm() {
 
   return (
     <form
-      className={`h-12 rounded-2xl bg-gray-100 px-6 flex flex-row items-center gap-3 ${
+      className={`h-12 rounded-2xl bg-gray-100 px-6 flex flex-row items-center gap-3 mb-6 ${
         inputFocus ? "outline outline-1 outline-purple-500" : ""
       }`}
     >
