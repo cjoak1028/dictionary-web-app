@@ -1,6 +1,5 @@
 import appLogo from "../assets/images/logo.svg";
 import FontPicker from "./FontPicker";
-import Divider from "./Divider";
 import ThemeToggler from "./ThemeToggler";
 
 export default function Header() {
@@ -9,7 +8,7 @@ export default function Header() {
       <img className="h-full" src={appLogo} alt="logo depicting a dictionary" />
       <div className="flex flex-row">
         <FontPicker />
-        <Divider />
+        <div className="self-stretch w-px mx-4 bg-outline"></div>
         <ThemeToggler />
       </div>
     </header>

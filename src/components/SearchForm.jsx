@@ -14,12 +14,12 @@ export default function SearchForm() {
 
   return (
     <form
-      className={`h-12 rounded-2xl bg-gray-100 px-6 flex flex-row items-center gap-3 mb-6 ${
-        inputFocus ? "outline outline-1 outline-purple-500" : ""
+      className={`h-12 rounded-2xl bg-surface-container px-6 flex flex-row items-center gap-3 mb-6 ${
+        inputFocus ? "outline outline-1 outline-primary" : ""
       }`}
     >
       <input
-        className="flex-1 w-full bg-gray-100 text-base font-bold focus:outline-0 caret-purple-500"
+        className="flex-1 w-full bg-surface-container text-base font-bold focus:outline-0 caret-primary"
         type="search"
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
