@@ -18,8 +18,10 @@ export default function SearchOutput() {
       </div>
       <Definition />
       <div className="text-sm">
-        <div className="h-px bg-gray-200 mb-6"></div>
-        <h5 className="mb-2 text-zinc-500 underline decoration-wavy">Source</h5>
+        <div className="h-px bg-outline mb-6"></div>
+        <h5 className="mb-2 text-on-surface-variant underline decoration-wavy">
+          Source
+        </h5>
         <a
           className="flex flex-row items-center gap-2"
           href="https://en.wiktionary.org/wiki/keyboard"
