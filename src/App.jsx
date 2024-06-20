@@ -4,7 +4,7 @@ import SearchOutput from "./components/SearchOutput.jsx";
 
 function App() {
   return (
-    <div className="p-6 text-on-surface">
+    <div className="p-6 text-on-surface bg-surface">
       <Header />
       <main>
         <SearchForm />
