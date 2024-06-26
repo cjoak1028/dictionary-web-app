@@ -1,6 +1,6 @@
 import appLogo from "../assets/images/logo.svg";
 import FontPicker from "./FontPicker";
-import ThemeToggler from "./ThemeToggler";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   return (
@@ -9,7 +9,7 @@ export default function Header() {
       <div className="flex flex-row">
         <FontPicker />
         <div className="self-stretch w-px mx-4 bg-outline"></div>
-        <ThemeToggler />
+        <ThemeToggle />
       </div>
     </header>
   );
