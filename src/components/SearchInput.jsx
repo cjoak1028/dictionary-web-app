@@ -1,7 +1,7 @@
 import { useState } from "react";
 import searchIcon from "../assets/images/icon-search.svg";
 
-export default function SearchForm() {
+export default function SearchInput() {
   const [inputFocus, setInputFocus] = useState(false);
 
   function handleInputFocus() {
@@ -13,14 +13,14 @@ export default function SearchForm() {
   }
 
   return (
-    <form
-      className={`h-12 rounded-2xl bg-surface-container px-6 flex flex-row items-center gap-3 mb-6 ${
-        inputFocus ? "outline outline-1 outline-primary" : ""
+    <section
+      className={`h-12 rounded-2xl bg-surface-container dark:bg-surface-container-dark px-6 flex flex-row items-center gap-3 mb-6 ${
+        inputFocus ? "outline outline-1 outline-primary" : null
       }`}
     >
       <input
-        className="flex-1 w-full bg-surface-container text-base font-bold focus:outline-0 caret-primary"
-        type="search"
+        className="flex-1 w-full bg-surface-container dark:bg-surface-container-dark text-base font-bold focus:outline-0 caret-primary"
+        type="text"
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
       />
@@ -31,6 +31,6 @@ export default function SearchForm() {
           alt="icon depicting a magnifying glass"
         />
       </span>
-    </form>
+    </section>
   );
 }

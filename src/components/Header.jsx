@@ -1,6 +1,6 @@
 import appLogo from "../assets/images/logo.svg";
 import FontPicker from "./FontPicker";
-import ThemeToggle from "./ThemeToggler";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   return (
