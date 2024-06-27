@@ -3,12 +3,26 @@ import { FontContext } from "../App.jsx";
 
 export default function FontPicker() {
   const [showMenu, setShowMenu] = useState(false);
+  const fontState = useContext(FontContext);
 
   function handleMenuClick() {
     setShowMenu((prevShowMenu) => !prevShowMenu);
   }
 
-  const handleFontChange = useContext(FontContext);
+  function handleFontChange(font) {
+    fontState.setFont(font);
+  }
+
+  function renderButtonTitle(font) {
+    switch (font) {
+      case "sans":
+        return "Sans Serif";
+      case "serif":
+        return "Serif";
+      default:
+        return "Mono";
+    }
+  }
 
   return (
     <div className="relative">
@@ -16,7 +30,9 @@ export default function FontPicker() {
         className="flex flex-row items-center gap-4"
         onClick={handleMenuClick}
       >
-        <span className="text-sm font-bold">Sans Serif</span>
+        <span className="text-sm font-bold">
+          {renderButtonTitle(fontState.font)}
+        </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="14"

@@ -13,7 +13,7 @@ function App() {
     <div
       className={`p-6 text-on-surface dark:text-on-surface-dark font-${font}`}
     >
-      <FontContext.Provider value={setFont}>
+      <FontContext.Provider value={{ font, setFont }}>
         <Header />
       </FontContext.Provider>
       <main>
