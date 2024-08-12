@@ -1,16 +1,28 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { FontContext } from "../App.jsx";
 
 export default function FontPicker() {
   const [showMenu, setShowMenu] = useState(false);
   const fontState = useContext(FontContext);
+  const fontPickerRef = useRef();
 
-  function handleMenuClick() {
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (!fontPickerRef.current.contains(event.target)) {
+        setShowMenu(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  function handleMenuButtonClick() {
     setShowMenu((prevShowMenu) => !prevShowMenu);
   }
 
   function handleFontChange(font) {
     fontState.setFont(font);
+    setShowMenu(false);
   }
 
   function renderButtonTitle(font) {
@@ -25,10 +37,10 @@ export default function FontPicker() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative" ref={fontPickerRef}>
       <button
         className="flex flex-row items-center gap-4"
-        onClick={handleMenuClick}
+        onClick={handleMenuButtonClick}
       >
         <span className="text-sm font-bold">
           {renderButtonTitle(fontState.font)}
