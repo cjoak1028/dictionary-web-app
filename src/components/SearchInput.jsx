@@ -3,6 +3,7 @@ import searchIcon from "../assets/images/icon-search.svg";
 
 export default function SearchInput() {
   const [inputFocus, setInputFocus] = useState(false);
+  const [inputVal, setInputVal] = useState("");
 
   function handleInputFocus() {
     setInputFocus(true);
@@ -10,6 +11,30 @@ export default function SearchInput() {
 
   function handleInputBlur() {
     setInputFocus(false);
+  }
+
+  function handleInputChange(e) {
+    setInputVal(e.target.value);
+  }
+
+  async function fetchSearchData() {
+    const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${inputVal}`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  async function handleSearchClick() {
+    const wordData = await fetchSearchData();
+    console.log(wordData);
   }
 
   return (
@@ -23,14 +48,16 @@ export default function SearchInput() {
         type="text"
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
+        value={inputVal}
+        onChange={handleInputChange}
       />
-      <span>
+      <button onClick={handleSearchClick}>
         <img
           className="w-4 h-4"
           src={searchIcon}
           alt="icon depicting a magnifying glass"
         />
-      </span>
+      </button>
     </section>
   );
 }
