@@ -7,6 +7,36 @@ export default function SearchOutput({ searchWord }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Extract valid phonetic text from data
+  function getPhoneticText(data) {
+    if (data.phonetic) {
+      return data.phonetic;
+    }
+
+    const firstValidPhonetic = data.phonetics.find(
+      (phonetic) => phonetic.text && phonetic.text.trim() !== ""
+    );
+    return firstValidPhonetic ? firstValidPhonetic.text : "//";
+  }
+
+  // Extract valid audio url from data
+  function getPhoneticAudioUrl(data) {
+    const phoneticWithAudio = data.phonetics.find(
+      (phonetic) => phonetic.audio && phonetic.audio.trim() !== ""
+    );
+    return phoneticWithAudio ? phoneticWithAudio.audio : null;
+  }
+
+  // Play audio if valid audio url exists
+  function playPhoneticAudio(data) {
+    const audioUrl = getPhoneticAudioUrl(data);
+    if (!audioUrl) {
+      return;
+    }
+    const audio = new Audio(audioUrl);
+    audio.play();
+  }
+
   useEffect(() => {
     async function fetchWordData(word) {
       const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
@@ -54,17 +84,17 @@ export default function SearchOutput({ searchWord }) {
         <span>
           <h1 className="text-3xl font-bold mb-2">{data.word}</h1>
           <h3 className="text-lg font-light text-primary">
-            {data.phonetic || data.phonetics[1].text}
+            {getPhoneticText(data)}
           </h3>
         </span>
         <span>
-          <button>
-            <img className="w-12 h-12" src={playIcon} alt="" />
+          <button onClick={() => playPhoneticAudio(data)}>
+            <img className="w-12 h-12" src={playIcon} alt="play button icon" />
           </button>
         </span>
       </div>
       <div className="mb-8 md:mb-10">
-        {data.meanings?.map((meaning, index) => {
+        {data.meanings.map((meaning, index) => {
           return (
             <div key={index} className="mb-8">
               <div className="flex flex-row items-center mb-8">
