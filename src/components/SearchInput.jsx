@@ -1,9 +1,9 @@
 import { useState } from "react";
 import searchIcon from "../assets/images/icon-search.svg";
 
-export default function SearchInput() {
+export default function SearchInput({ initialWord, onWordSearch }) {
   const [inputFocus, setInputFocus] = useState(false);
-  const [inputVal, setInputVal] = useState("");
+  const [inputVal, setInputVal] = useState(initialWord);
 
   function handleInputFocus() {
     setInputFocus(true);
@@ -17,30 +17,16 @@ export default function SearchInput() {
     setInputVal(e.target.value);
   }
 
-  async function fetchSearchData() {
-    const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${inputVal}`;
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
-
   async function handleSearchClick() {
-    const wordData = await fetchSearchData();
-    console.log(wordData);
+    // const wordData = await fetchSearchData(inputVal);
+    // onSearch(wordData[0]);
+    onWordSearch(inputVal);
   }
 
   return (
     <section
       className={`h-12 rounded-2xl bg-surface-container dark:bg-surface-container-dark px-6 flex flex-row items-center gap-3 mb-6 ${
-        inputFocus ? "outline outline-1 outline-primary" : null
+        inputFocus && "outline outline-1 outline-primary"
       }`}
     >
       <input
