@@ -17,9 +17,7 @@ export default function SearchInput({ initialWord, onWordSearch }) {
     setInputVal(e.target.value);
   }
 
-  async function handleSearchClick() {
-    // const wordData = await fetchSearchData(inputVal);
-    // onSearch(wordData[0]);
+  function handleSearchClick() {
     onWordSearch(inputVal);
   }
 
