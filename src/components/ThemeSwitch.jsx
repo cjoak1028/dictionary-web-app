@@ -1,4 +1,4 @@
-export default function ThemeToggle() {
+export default function ThemeSwitch() {
   function handleToggle() {
     document.body.classList.toggle("dark");
   }

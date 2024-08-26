@@ -1,8 +1,9 @@
 import { useState } from "react";
 import searchIcon from "../assets/images/icon-search.svg";
 
-export default function SearchInput() {
+export default function SearchInput({ initialWord, onWordSearch }) {
   const [inputFocus, setInputFocus] = useState(false);
+  const [inputVal, setInputVal] = useState(initialWord);
 
   function handleInputFocus() {
     setInputFocus(true);
@@ -12,10 +13,18 @@ export default function SearchInput() {
     setInputFocus(false);
   }
 
+  function handleInputChange(e) {
+    setInputVal(e.target.value);
+  }
+
+  function handleSearchClick() {
+    onWordSearch(inputVal);
+  }
+
   return (
     <section
       className={`h-12 rounded-2xl bg-surface-container dark:bg-surface-container-dark px-6 flex flex-row items-center gap-3 mb-6 ${
-        inputFocus ? "outline outline-1 outline-primary" : null
+        inputFocus && "outline outline-1 outline-primary"
       }`}
     >
       <input
@@ -23,14 +32,16 @@ export default function SearchInput() {
         type="text"
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
+        value={inputVal}
+        onChange={handleInputChange}
       />
-      <span>
+      <button onClick={handleSearchClick}>
         <img
           className="w-4 h-4"
           src={searchIcon}
           alt="icon depicting a magnifying glass"
         />
-      </span>
+      </button>
     </section>
   );
 }

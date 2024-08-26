@@ -8,6 +8,7 @@ export const FontContext = createContext(null);
 
 function App() {
   const [font, setFont] = useState("sans");
+  const [word, setWord] = useState("keyboard");
 
   return (
     <div
@@ -17,8 +18,8 @@ function App() {
         <Header />
       </FontContext.Provider>
       <main>
-        <SearchInput />
-        <SearchOutput />
+        <SearchInput initialWord={word} onWordSearch={setWord} />
+        <SearchOutput searchWord={word} />
       </main>
     </div>
   );
