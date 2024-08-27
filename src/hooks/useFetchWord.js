@@ -1,19 +1,26 @@
 import { useState, useEffect } from 'react';
 
-export default function useFetchWord(url) {
+export default function useFetchWord(word) {
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         setLoading(true);
         setData(null);
-        setError(null);
+        setError(false);
 
-        async function fetchWordData(url) {
+        async function fetchWordData(word) {
+            const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
             try {
+                setLoading(true);
+                setData(null);
+                setError(false);
+
                 const response = await fetch(url);
+
                 if (!response.ok) {
+                    console.log('ERROR!!');
                     throw new Error(`Reponse status: ${response.status}`);
                 }
 
@@ -22,17 +29,22 @@ export default function useFetchWord(url) {
 
                 // REMOVE TIMER
                 setTimeout(() => {
-                    setLoading(null);
+                    setLoading(false);
                 }, "1000");
             } catch (error) {
-                setLoading(null);
-                setError(error);
+                setLoading(false);
+                setError(true);
             }
         }
 
-        setLoading(true);
-        fetchWordData(url);
-    }, [url]);
+        if (word) {
+            setLoading(true);
+            fetchWordData(word);
+        } else {
+            setLoading(false);
+        }
+
+    }, [word]);
 
     return [data, loading, error];
 }
