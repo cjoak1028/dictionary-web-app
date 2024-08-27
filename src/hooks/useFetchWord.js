@@ -8,12 +8,18 @@ export default function useFetchWord(url) {
     useEffect(() => {
         setLoading(true);
         setData(null);
-        setError(null);
+        setError(true);
 
         async function fetchWordData(url) {
             try {
+                setLoading(true);
+                setData(null);
+                setError(false);
+
                 const response = await fetch(url);
+
                 if (!response.ok) {
+                    console.log('ERROR!!');
                     throw new Error(`Reponse status: ${response.status}`);
                 }
 
@@ -25,8 +31,8 @@ export default function useFetchWord(url) {
                     setLoading(null);
                 }, "1000");
             } catch (error) {
-                setLoading(null);
-                setError(error);
+                setLoading(false);
+                setError(true);
             }
         }
 
