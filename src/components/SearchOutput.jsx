@@ -5,8 +5,7 @@ import Source from "./Source.jsx";
 import useFetchWord from "../hooks/useFetchWord.js";
 
 export default function SearchOutput({ searchWord }) {
-  const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`;
-  const [data, loading, error] = useFetchWord(url);
+  const [data, loading, error] = useFetchWord(searchWord);
 
   // REMOVE
   useEffect(() => {
@@ -21,7 +20,7 @@ export default function SearchOutput({ searchWord }) {
     );
   }
 
-  if (error || !data) {
+  if (error) {
     return (
       <div className="mt-32">
         <p className="text-6xl text-center">😕</p>
@@ -37,7 +36,7 @@ export default function SearchOutput({ searchWord }) {
     );
   }
 
-  return (
+  return data ? (
     <>
       <Phonetic data={data} />
       <div className="mb-8 md:mb-10">
@@ -47,5 +46,5 @@ export default function SearchOutput({ searchWord }) {
       </div>
       <Source url={data.sourceUrls[0]} />
     </>
-  );
+  ) : null;
 }
