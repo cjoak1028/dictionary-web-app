@@ -7,7 +7,7 @@ export default function Source({ url }) {
       <h5 className="mb-2 text-on-surface-variant underline decoration-wavy">
         Source
       </h5>
-      <a className="flex flex-row items-center gap-2" href={url}>
+      <a className="inline-flex flex-row items-center gap-2" href={url}>
         <span className="break-all">{url}</span>
         <img
           className="w-3 h-3"
