@@ -25,7 +25,9 @@ export default function useFetchWord(word) {
                 }
 
                 const data = await response.json();
-                setData(data[0]);
+                if(!ignore) {
+                    setData(data[0]);
+                }
             } catch (error) {
                 setError(true);
             } finally {
@@ -33,7 +35,11 @@ export default function useFetchWord(word) {
             }
         }
 
+        let ignore = false;
         fetchWordData(word);
+        return () => {
+            ignore = true;
+        }
 
     }, [word]);
 
