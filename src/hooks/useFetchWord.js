@@ -7,43 +7,33 @@ export default function useFetchWord(word) {
 
     useEffect(() => {
         setLoading(true);
-        setData(null);
         setError(false);
+
+        if (!word) {
+            setData(null);
+            setLoading(false);
+            return;
+        }
 
         async function fetchWordData(word) {
             const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
             try {
-                setLoading(true);
-                setData(null);
-                setError(false);
-
                 const response = await fetch(url);
 
                 if (!response.ok) {
-                    console.log('ERROR!!');
                     throw new Error(`Reponse status: ${response.status}`);
                 }
 
                 const data = await response.json();
                 setData(data[0]);
-
-                // REMOVE TIMER
-                setTimeout(() => {
-                    setLoading(false);
-                }, "1000");
             } catch (error) {
-                setLoading(false);
                 setError(true);
+            } finally {
+                setLoading(false);
             }
         }
 
-        // Prevents fetch when word is empty
-        if (word) {
-            setLoading(true);
-            fetchWordData(word);
-        } else {
-            setLoading(false);
-        }
+        fetchWordData(word);
 
     }, [word]);
 

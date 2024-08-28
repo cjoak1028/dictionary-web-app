@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Meaning from "./Meaning.jsx";
 import Phonetic from "./Phonetic.jsx";
 import Source from "./Source.jsx";
@@ -6,11 +5,6 @@ import useFetchWord from "../hooks/useFetchWord.js";
 
 export default function SearchOutput({ searchWord }) {
   const [data, loading, error] = useFetchWord(searchWord);
-
-  // REMOVE
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   if (loading) {
     return (
