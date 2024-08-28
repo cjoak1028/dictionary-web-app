@@ -1,5 +1,5 @@
 import appLogo from "../assets/images/logo.svg";
-import FontPicker from "./FontPicker";
+import FontPicker from "./FontPicker.jsx";
 import ThemeSwitch from "./ThemeSwitch.jsx";
 
 export default function Header() {

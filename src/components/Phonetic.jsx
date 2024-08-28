@@ -1,4 +1,4 @@
-import playIcon from "../assets/images/icon-play.svg";
+import PlayButton from "./PlayButton.jsx";
 
 export default function Phonetic({ data }) {
   // Extract valid phonetic text from data
@@ -40,9 +40,7 @@ export default function Phonetic({ data }) {
         </h3>
       </span>
       <span>
-        <button onClick={() => playPhoneticAudio(data)}>
-          <img className="w-12 h-12" src={playIcon} alt="play button icon" />
-        </button>
+        <PlayButton onClick={() => playPhoneticAudio(data)} />
       </span>
     </div>
   );
