@@ -35,7 +35,7 @@ export default function SearchInput({ initialWord, onWordSearch }) {
         } ${isEmpty && "outline outline-1 outline-error"}`}
       >
         <input
-          className="flex-1 w-full bg-surface-container dark:bg-surface-container-dark text-base font-bold focus:outline-0 caret-primary placeholder:text-on-surface/30"
+          className="flex-1 w-full bg-surface-container dark:bg-surface-container-dark text-base font-bold focus:outline-0 caret-primary placeholder:text-on-surface/30 dark:placeholder:text-on-surface-dark/30"
           type="text"
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
