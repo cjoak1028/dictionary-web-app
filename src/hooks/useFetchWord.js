@@ -37,6 +37,7 @@ export default function useFetchWord(word) {
             }
         }
 
+        // Prevents fetch when word is empty
         if (word) {
             setLoading(true);
             fetchWordData(word);
