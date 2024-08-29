@@ -37,7 +37,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Link](https://github.com/cjoak1028/dictionary-web-app)
-- Live Site URL: [Link](https://your-live-site-url.com)
+- Live Site URL: [Link](https://dictionary-web-app-7wod.vercel.app/)
 
 ## My process
 
