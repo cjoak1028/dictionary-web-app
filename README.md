@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./src/assets/images/screenshots/screenshot-mobile.png)
-![](./src/assets/images/screenshots/screenshot-desktop.png)
+![](./src/assets/images/screenshots/ss-mobile.png)
+![](./src/assets/images/screenshots/ss-desktop.png)
 
 ### Links
 
