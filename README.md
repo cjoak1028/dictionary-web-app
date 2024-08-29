@@ -11,10 +11,8 @@ A dictionary web application
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -33,8 +31,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./src/assets/images/screenshots/screenshot-mobile.jpg)
-![](./src/assets/images/screenshots/screenshot-desktop.jpg)
+![](./src/assets/images/screenshots/screenshot-mobile.png)
+![](./src/assets/images/screenshots/screenshot-desktop.png)
 
 ### Links
 
@@ -92,7 +90,7 @@ useEffect(() => {
 }, [word]);
 ```
 
-I learned that when dealing with network responses, race conditions can occur such as when searching for a new word while a fetch is still in progress. To prevent this, I used an ignore variable that starts as false. When the word dependency changes, the cleanup function in the effect sets ignore to true, indicating that the previous request should be ignored. This way, if the fetch completes after the word has changed, the state won't be updated with outdated data, effectively preventing unnecessary re-renders.
+I learned that when dealing with network responses, race conditions can occur such as when searching for a new word while a fetch is still in progress. To prevent this, I used an ignore variable that starts as false. When the word dependency changes, the cleanup function in the effect sets ignore to true, indicating that the previous request should be ignored. This way, if the fetch completes after the word has changed, the data state won't be updated with outdated data.
 
 ### Useful resources
 
