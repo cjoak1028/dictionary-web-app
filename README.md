@@ -1,6 +1,6 @@
 # Dictionary Web App
 
-A dictionary web application
+A dictionary web application that uses the Free Dictionary API
 
 ## Table of contents
 
