@@ -28,14 +28,14 @@ export default function SearchInput({ initialWord, onWordSearch }) {
   }
 
   return (
-    <section className="mb-6">
+    <section className="mb-6 md:mb-12">
       <div
-        className={`h-12 rounded-2xl bg-surface-container dark:bg-surface-container-dark px-6 flex flex-row items-center gap-3 ${
+        className={`h-12 md:h-16 rounded-2xl bg-surface-container dark:bg-surface-container-dark px-6 flex flex-row items-center gap-3 ${
           inputFocus && "outline outline-1 outline-primary"
         } ${isEmpty && "outline outline-1 outline-error"}`}
       >
         <input
-          className="flex-1 w-full bg-surface-container dark:bg-surface-container-dark text-base font-bold focus:outline-0 caret-primary placeholder:text-on-surface/30 dark:placeholder:text-on-surface-dark/30"
+          className="flex-1 w-full bg-surface-container dark:bg-surface-container-dark text-base font-bold focus:outline-0 caret-primary placeholder:text-on-surface/30 dark:placeholder:text-on-surface-dark/30 md:text-xl"
           type="text"
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}

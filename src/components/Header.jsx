@@ -4,7 +4,7 @@ import ThemeSwitch from "./ThemeSwitch.jsx";
 
 export default function Header() {
   return (
-    <header className="h-8 mb-6 flex flex-row items-center justify-between">
+    <header className="h-8 md:h-8 mb-6 md:mb-12 flex flex-row items-center justify-between">
       <img className="h-full" src={appLogo} alt="logo depicting a dictionary" />
       <div className="flex flex-row">
         <FontPicker />

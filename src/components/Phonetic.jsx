@@ -34,8 +34,10 @@ export default function Phonetic({ data }) {
   return (
     <div className="flex flex-row justify-between items-center mb-8">
       <span>
-        <h1 className="text-3xl font-bold mb-2">{data.word}</h1>
-        <h3 className="text-lg font-light text-primary">
+        <h1 className="text-3xl md:text-6xl font-bold mb-2 md:mb-4">
+          {data.word}
+        </h1>
+        <h3 className="text-lg md:text-2xl font-light text-primary">
           {getPhoneticText(data)}
         </h3>
       </span>
